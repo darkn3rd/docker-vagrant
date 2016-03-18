@@ -1,0 +1,10 @@
+# Docker in Vagrant
+
+This is a small demonstration of a Vagrant's Docker provisioner.
+
+## Instructions
+
+```bash
+vagrant up --no-provision # bring up base OS w/o Docker
+vagrant provision         # provision with Docker
+```

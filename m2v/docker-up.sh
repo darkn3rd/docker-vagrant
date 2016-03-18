@@ -3,6 +3,7 @@
 PRIVATE_IP="10.10.10.4"
 PRIVATE_KEY=".vagrant/machines/default/virtualbox/private_key"
 
+# Boostrap Virtual Machine
 vagrant up
 
 # Destructively Remove Existing Docker Machien named vagrant
@@ -18,6 +19,5 @@ docker-machine create --driver generic  \
 # Configure Environment
 eval "$(docker-machine env vagrant)"
 
-# Configure Customer WEBSERVER address
-[ -z "${DOCKER_MACHINE_NAME}" ] || WEBSERVER=$(docker-machine ip "${DOCKER_MACHINE_NAME}") && WEBSERVER="localhost"
-export WEBSERVER
+# Boostrap Container Environment
+docker-compose up -d

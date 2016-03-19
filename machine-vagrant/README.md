@@ -1,6 +1,6 @@
 # **Docker Machine Using Vagrant**
 
-This is a small demonstration of using Docker Machine using Vagrant.
+This is a small demonstration of using Docker Machine generic driver with Vagrant.
 
 ## **Instructions**
 

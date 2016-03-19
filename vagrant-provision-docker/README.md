@@ -1,4 +1,4 @@
-# **Docker in Vagrant**
+# **Vagrant with Docker Provisioner**
 
 This is a small demonstration of a Vagrant's Docker provisioner.
 

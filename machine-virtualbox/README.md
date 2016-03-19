@@ -1,6 +1,6 @@
 # **Docker Machine Using Virtualbox**
 
-This is a small demonstration of using Docker Machine using Virtualbox.
+This is a small demonstration of using Docker Machine using Virtualbox driver.
 
 ## **Instructions**
 

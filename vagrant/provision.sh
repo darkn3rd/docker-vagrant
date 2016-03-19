@@ -11,7 +11,6 @@ apt-get -y install nodejs
 # Create app directory if it doesn't already exist
 APP_HOME="/usr/src/app"
 mkdir -vp ${APP_HOME}
-WORKDIR=${APP_HOME}
 
 # Install app dependencies
-su -s /bin/bash -c "{ cd ${WORKDIR}; npm install --no-color; }"
+su -s /bin/bash -c "{ cd ${APP_HOME}; npm install --no-color; }"

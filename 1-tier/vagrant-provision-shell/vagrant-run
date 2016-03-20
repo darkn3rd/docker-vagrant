@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+APP_NAME="default"
+APP_HOME="/usr/src/app"
+
+if vagrant status | grep -q "^${APP_NAME}.*running"; then
+  vagrant ssh-config ${APP_NAME} > ${APP_NAME}.ssh_config
+  ssh -F ${APP_NAME}.ssh_config vagrant@${APP_NAME} "{ cd ${APP_HOME}; npm start ; }"
+fi

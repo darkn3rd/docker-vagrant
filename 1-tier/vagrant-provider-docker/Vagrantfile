@@ -1,0 +1,23 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+PORT = 8089
+APP_HOME = "/usr/src/app"
+Vagrant.configure(2) do |config|
+  #config.vm.box = "ubuntu/trusty64"
+  config.vm.network "forwarded_port", guest: PORT, host: PORT
+  config.vm.synced_folder ".", "#{APP_HOME}", type: "rsync",
+    rsync__exclude: [".git/", "node_modules"]
+
+  ENV['VAGRANT_DEFAULT_PROVIDER'] = 'docker'
+
+  config.vm.provision "shell", path: "provision.sh"
+
+  config.vm.provider "docker" do |docker|
+    docker.build_dir = "."
+    docker.has_ssh = true
+  end
+
+  config.ssh.port = 22
+
+end

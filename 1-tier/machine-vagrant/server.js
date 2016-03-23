@@ -8,10 +8,14 @@ const PORT = 8080;
 // Application
 const app = express();
 
+var ip = 0
+
 // Multiple Route Scenario
 app.get('/', function (req, res) {
   res.send('Hello world!\n');
 });
 
 app.listen(PORT);
-console.log('Running on http://localhost:' + PORT);
+
+var ip = require("ip");
+console.log('Running on http://' + ip.address() + ':' + PORT);

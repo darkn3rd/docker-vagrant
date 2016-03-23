@@ -5,5 +5,8 @@ PRIVATE_IP="10.10.10.4"
 
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
-  config.vm.network "private_network", ip: PRIVATE_IP # private IP for docker
+  # Private IP address required for Docker Machine
+  config.vm.network "private_network", ip: PRIVATE_IP
+  # Manually Install Docker (Docker Machine Too Sloooow)
+  config.vm.provision "shell", path: "install_docker_ubuntu.sh"
 end

@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 getWebServer() {
-  echo  localhost # force localhost
+  echo  localhost
 }
 
-curl -i $(getWebServer):8080
+PORT=8089
+curl -i $(getWebServer):${PORT}

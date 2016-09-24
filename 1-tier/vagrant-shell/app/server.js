@@ -1,11 +1,8 @@
 'use strict';
 
-const express = require('express');
-
 // Constants
-const PORT = 8088;
-
-// Application
+const PORT = process.env.PORT || 8088;
+const express = require('express');
 const app = express();
 
 // Multiple Route Scenario

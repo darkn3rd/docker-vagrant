@@ -1,13 +1,22 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-PORT = 8088
-APP_HOME = "/usr/src/app"
+# global static configs
+PORT = ENV['PORT'] || 8088
+APP_HOME = ENV['APP_HOME'] || "/opt/myapp"
+
+# vagrant instructions
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.network "forwarded_port", guest: PORT, host: PORT
-  config.vm.synced_folder ".", "#{APP_HOME}", type: "rsync",
+  config.vm.synced_folder "app/", "#{APP_HOME}", type: "rsync",
     rsync__exclude: [".git/", "node_modules"]
 
-  config.vm.provision "shell", path: "provision.sh"
+  config.vm.provision "shell" do |script|
+    script.env = {
+      "PORT" => PORT,
+      "APP_HOME" => APP_HOME
+    }
+    script.path = "scripts/provision.sh"
+  end
 end

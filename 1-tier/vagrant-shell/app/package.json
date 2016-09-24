@@ -1,6 +1,7 @@
 {
   "name": "express_hello_world",
   "version": "1.0.0",
+  "private": true,
   "description": "Express Hello World",
   "author": "Joaquin Menchaca <suavecali@yahoo.com>",
   "main": "server.js",
@@ -9,5 +10,6 @@
   },
   "dependencies": {
     "express": "^4.13.3"
-  }
+  },
+  "license": "MIT"
 }

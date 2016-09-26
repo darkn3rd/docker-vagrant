@@ -16,5 +16,5 @@ vagrant provision         # provision with Docker
 ### **Test the Web Service**
 
 ```bash
-./test.sh
+./app_test
 ```

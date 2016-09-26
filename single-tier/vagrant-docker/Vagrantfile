@@ -1,15 +1,17 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-PORT = 8089
+PORT = ENV['PORT'] || 8089
 APP_HOME = "/usr/src/app"
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.network "forwarded_port", guest: PORT, host: PORT
 
-  config.vm.provision "shell", path: "/scripts/install_docker_ubuntu.sh"
+  # Vagrant Docker Install takes
+  config.vm.provision "shell", path: "scripts/install_docker_ubuntu.sh"
+
   config.vm.provision "docker" do |docker|
     docker.build_image "/vagrant", args: "-t web"
-    docker.run "web" , args: "-p #{PORT}:#{PORT}" # container
+    docker.run "web" , args: "-p #{PORT}:#{PORT} -e 'PORT=#{PORT}'" # container
   end
 end
